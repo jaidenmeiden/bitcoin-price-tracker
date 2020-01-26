@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
+import { IonApp, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/react'
+import { getBitcoinPrice } from './api/bitcoin';
 import './App.css';
 import logo from './logo.svg';
-import { getBitcoinPrice } from './api/bitcoin';
 
 class App extends Component {
   state = {
@@ -22,23 +23,18 @@ class App extends Component {
   }
 
   render() {
+    const {bitcoinInfo} = this.state;
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <IonApp>
+        <IonHeader>
+          <IonToolbar color="primary">
+            <IonTitle>Bitcoin Price Tracker</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent>
+          <code>{JSON.stringify(bitcoinInfo)}</code>
+        </IonContent>
+      </IonApp>
     );    
   }
 }
