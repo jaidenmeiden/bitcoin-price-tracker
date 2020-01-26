@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import { IonApp, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/react';
-import { LoadingCard } from './components/LoadingCard/LoadingCard'
+import { LoadingCard } from './components/LoadingCard/LoadingCard';
+import { BitcoinCard } from './components/BitcoinCard/BitcoinCard';
 import { getBitcoinPrice } from './api/bitcoin';
 import './App.css';
-import logo from './logo.svg';
 
 class App extends Component {
   state = {
@@ -17,7 +17,7 @@ class App extends Component {
     this.setState(
       {
         bitcoinInfo,
-        loading: true
+        loading: false
       }, 
       () => console.log(this.state)
     );
@@ -33,6 +33,11 @@ class App extends Component {
     );
   }
 
+  createBitcoinCards(bitcoinInfo) {
+    return Object.keys.keys(bitcoinInfo.bpi)
+    .map((item, index) => <BitcoinCard data={bitcoinInfo.bpi[item]}/>)
+  }
+
   render() {
     const {bitcoinInfo, loading} = this.state;
     return (
@@ -45,7 +50,9 @@ class App extends Component {
         <IonContent>
           <LoadingCard/>
           {
-            loading === true ? this.createLoadingCards() : null
+            loading === true 
+            ? this.createLoadingCards() 
+            : this.createBitcoinCards(bitcoinInfo)
           }
         </IonContent>
       </IonApp>
