@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import { IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonSkeletonText } from '@ionic/react'
 
 import './LoadingCard.css';
@@ -15,3 +15,5 @@ const LoadingCard = () => (
         </IonCardHeader>
     </IonCard>
 );
+
+export default LoadingCard;
