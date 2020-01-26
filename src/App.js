@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { IonApp, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/react';
+import { IonApp, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon } from '@ionic/react';
 import { LoadingCard } from './components/LoadingCard/LoadingCard';
 import { BitcoinCard } from './components/BitcoinCard/BitcoinCard';
 import { getBitcoinPrice } from './api/bitcoin';
@@ -48,12 +48,18 @@ class App extends Component {
           </IonToolbar>
         </IonHeader>
         <IonContent>
+          <section className="bitcoin__header">
+            <IonIcon name="logo-bitcoin" className="bitcoin__logo"></IonIcon>
+          </section>          
           <LoadingCard/>
           {
             loading === true 
             ? this.createLoadingCards() 
             : this.createBitcoinCards(bitcoinInfo)
           }
+          <section className="bitcoin__disclaimer">
+            <p>{bitcoinInfo.disclaimer}</p>
+          </section>
         </IonContent>
       </IonApp>
     );    
