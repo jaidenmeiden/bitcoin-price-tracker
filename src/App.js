@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import { IonApp, IonHeader, IonToolbar, IonTitle, IonContent, IonIcon } from '@ionic/react';
-import { LoadingCard } from './components/LoadingCard/LoadingCard';
-import { BitcoinCard } from './components/BitcoinCard/BitcoinCard';
-import { getBitcoinPrice } from './api/bitcoin';
+import LoadingCard from './components/LoadingCard/LoadingCard';
+import BitcoinCard from './components/BitcoinCard/BitcoinCard';
+import { getBitcoinPrice } from './api/Bitcoin';
 import './App.css';
 
 class App extends Component {
@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   createBitcoinCards(bitcoinInfo) {
-    return Object.keys.keys(bitcoinInfo.bpi)
+    return Object.keys(bitcoinInfo.bpi)
     .map((item, index) => <BitcoinCard data={bitcoinInfo.bpi[item]}/>)
   }
 
@@ -49,9 +49,8 @@ class App extends Component {
         </IonHeader>
         <IonContent>
           <section className="bitcoin__header">
-            <IonIcon name="logo-bitcoin" className="bitcoin__logo"></IonIcon>
-          </section>          
-          <LoadingCard/>
+            <IonIcon name="logo-bitcoin" className="bitcoin__logo"/>
+          </section>
           {
             loading === true 
             ? this.createLoadingCards() 

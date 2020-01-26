@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonSkeletonText } from '@ionic/react'
+import { IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle } from '@ionic/react'
 
 import './BitcoinCard.css';
 
@@ -10,7 +10,7 @@ const BitcoinCard = (props) => (
                 {props.data.code}
             </IonCardSubtitle>
             <IonCardTitle>
-                {props.data.read_float}
+                {props.data.rate_float}
             </IonCardTitle>
         </IonCardHeader>
     </IonCard>
